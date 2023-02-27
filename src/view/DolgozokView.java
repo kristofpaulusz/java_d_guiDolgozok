@@ -49,10 +49,6 @@ public class DolgozokView extends javax.swing.JFrame {
 
         jLabel2.setText("Fiúk");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel3.setText("Összesítő");
 
         buttonGroup1.add(jRadioButton2);
