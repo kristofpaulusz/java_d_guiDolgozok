@@ -18,8 +18,20 @@ public class Dolgozo {
         this.nem = nem;
         this.munkToltEv = 0;
     }
-//    @Override
-//    public String toString() {
-//        return "Dolgozo{" + "nev=" + nev + ", kor=" + kor + ", nem=" + nem + ", munkToltEv=" + munkToltEv + '}';
-//    }
+
+    public Integer getMunkToltEv() {
+        return munkToltEv;
+    }
+
+    public Integer getKor() {
+        return kor;
+    }
+
+    public String getNem() {
+        return nem;
+    }
+
+    public String getNev() {
+        return nev;
+    }
 }

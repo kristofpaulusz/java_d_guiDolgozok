@@ -4,18 +4,28 @@
  */
 package view;
 
+import java.util.ArrayList;
+import model.Dolgozo;
+
 /**
  *
  * @author paulusz.k.csanad
  */
 public class DolgozokView extends javax.swing.JFrame {
+    public static ArrayList<Dolgozo> dolgozok;
+    private String valasztottNem;
 
-    /**
-     * Creates new form DolgozokView
-     */
+    public void setDolgozok(ArrayList<Dolgozo> dolgozok) {
+        this.dolgozok = dolgozok;
+        
+    }
+    
+    
+    
     public DolgozokView() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,8 +42,8 @@ public class DolgozokView extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        fiuButton = new javax.swing.JRadioButton();
+        lanyButton = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -51,16 +61,21 @@ public class DolgozokView extends javax.swing.JFrame {
 
         jLabel3.setText("Összesítő");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Fiú");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(fiuButton);
+        fiuButton.setText("Fiú");
+        fiuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                fiuButtonActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Lány");
+        buttonGroup1.add(lanyButton);
+        lanyButton.setText("Lány");
+        lanyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lanyButtonActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Legidősebb:");
 
@@ -98,9 +113,9 @@ public class DolgozokView extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addComponent(jLabel3)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
+                        .addComponent(lanyButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton2))
+                        .addComponent(fiuButton))
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
@@ -128,11 +143,11 @@ public class DolgozokView extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel7))
                 .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jRadioButton1)
-                        .addComponent(jRadioButton2)))
+                        .addComponent(lanyButton)
+                        .addComponent(fiuButton))
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -158,9 +173,17 @@ public class DolgozokView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    private void fiuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fiuButtonActionPerformed
+        System.out.println(dolgozok);
+        valasztottNem = "F";
+        System.out.println(valasztottNem);
+        showOsszesito(valasztottNem);
+    }//GEN-LAST:event_fiuButtonActionPerformed
+
+    private void lanyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lanyButtonActionPerformed
+        valasztottNem = "L";
+        showOsszesito(valasztottNem);
+    }//GEN-LAST:event_lanyButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,6 +222,7 @@ public class DolgozokView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton fiuButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -212,7 +236,60 @@ public class DolgozokView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton lanyButton;
     // End of variables declaration//GEN-END:variables
+
+    private void showOsszesito(String valasztottNem) {
+        
+//        ArrayList<Dolgozo> sorted = sortByNem(valasztottNem);
+        
+        // Kor:
+    }
+    public void setEredmeny(String kor, String osszes, String nev) {
+        jLabel4.setText("Legidősebb: " + kor);
+        jLabel5.setText("Összes: " + osszes);
+        jLabel6.setText("Név: " + osszes);
+    }
+//    public ArrayList<Dolgozo> sortByNem(String nem) {
+//         // Szűrés nem szerint
+//        ArrayList<Dolgozo> csakEgyNem = new ArrayList<>();
+//        for (Dolgozo dolgozo : this.dolgozok) {
+//            if (dolgozo.getNem().equals(nem)) {
+//                csakEgyNem.add(dolgozo);
+//            }
+//        }
+//        return csakEgyNem;
+//    }
+//    public Integer osszes(ArrayList<Dolgozo> dolgozok) {
+//        Integer osszeg = 0;
+//        for (Dolgozo dolgozo : dolgozok) {
+//            osszeg += dolgozo.getKor();
+//        }
+//        return osszeg;
+//    }
+//    public Dolgozo legidosebb(ArrayList<Dolgozo> dolgozok) {
+////        System.out.println(dolgozok);
+//        Dolgozo idos = dolgozok.get(0);
+//        for (Dolgozo dolgozo : dolgozok) {
+//            if (dolgozo.getKor() > idos.getKor()) {
+//                idos = dolgozo;
+//            }
+//        }
+//        
+//        return idos;
+//    }
+//    public Dolgozo elsoHatEveDolgozo(ArrayList<Dolgozo> dolgozok) {
+//        boolean nincsTalalat = true;
+//        int index = 0;
+//        Dolgozo talalat = null;
+//        while (nincsTalalat && index  < dolgozok.size()) {
+//            if (dolgozok.get(index).getMunkToltEv() >= 6) {
+//                talalat = dolgozok.get(index);
+//                nincsTalalat = false;
+//            }
+//            index += 1;
+//        }
+//        return talalat;
+//    };
+
 }

@@ -20,6 +20,55 @@ public class DolgozokModel {
             }
             else dolgozok.add(new Dolgozo(sor[0], Integer.parseInt(sor[1]), sor[2]));
         }
+        
+    }
+
+    public ArrayList<Dolgozo> getDolgozok() {
+        return dolgozok;
+    }
+
+    public Dolgozo legidosebb(ArrayList<Dolgozo> dolgozok) {
+        
+       
+        Dolgozo idos = dolgozok.get(0);
+        for (Dolgozo dolgozo : dolgozok) {
+            if (dolgozo.getKor() > idos.getKor()) {
+                idos = dolgozo;
+            }
+        }
+        return idos;
+    }
+    public Dolgozo elsoHatEveDolgozo(ArrayList<Dolgozo> dolgozok) {
+        boolean nincsTalalat = true;
+        int index = 0;
+        Dolgozo talalat = null;
+        while (nincsTalalat && index  < dolgozok.size()) {
+            if (dolgozok.get(index).getMunkToltEv() >= 6) {
+                talalat = dolgozok.get(index);
+                nincsTalalat = false;
+            }
+            index += 1;
+        }
+        return talalat;
+    };
+
+    public ArrayList<Dolgozo> sortByNem(String nem) {
+         // Szűrés nem szerint
+        ArrayList<Dolgozo> csakEgyNem = new ArrayList<>();
+        for (Dolgozo dolgozo : dolgozok) {
+            if (dolgozo.getNem().equals(nem)) {
+                csakEgyNem.add(dolgozo);
+            }
+        }
+        return csakEgyNem;
+    }
+
+    public Integer osszes(ArrayList<Dolgozo> dolgozok) {
+        Integer osszeg = 0;
+        for (Dolgozo dolgozo : dolgozok) {
+            osszeg += dolgozo.getKor();
+        }
+        return osszeg;
     }
     
 }
